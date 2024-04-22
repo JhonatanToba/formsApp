@@ -15,14 +15,16 @@
                            class="form-control"
                            formControlName="name"
                            placeholder="Nombre del producto">
-
-                    <span *ngIf="myForm.controls['name'].getError('required') && myForm.controls['name'].touched" class="form-text text-danger">
+                      <span *ngIf="isValidField('name')" class="form-text text-danger">
+                        {{ getFieldError('name') }}
+                      </span>
+                    <!-- <span *ngIf="myForm.controls['name'].getError('required') && myForm.controls['name'].touched" class="form-text text-danger">
                         Este campo es requerido
                     </span>
                     <span *ngIf="myForm.controls['name'].getError('minlength') && myForm.controls['name'].touched" class="form-text text-danger">
-                      <!-- Debe de ser de 3 letras -->
+
                       Este campo requiere mínimo 3 letras
-                  </span>
+                  </span> -->
                 </div>
             </div>
 
@@ -30,13 +32,16 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
+
                     <input type="number"
                            formControlName="price"
                            class="form-control"
                            placeholder="Precio del producto">
-                    <span class="form-text text-danger">
+
+                    <span *ngIf="isValidField('price')" class="form-text text-danger">
                         El precio debe de ser 0 o mayor
                     </span>
+
                 </div>
             </div>
 
@@ -49,7 +54,7 @@
                            class="form-control"
                            placeholder="Existencias del producto">
 
-                    <span class="form-text text-danger">
+                    <span *ngIf="isValidField('inStorage')" class="form-text text-danger">
                          Las existencias deben de ser 0 o mayor
                     </span>
                 </div>
